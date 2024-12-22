@@ -1,15 +1,16 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-import os
 
 # Fungsi untuk memuat data
 def load_data():
-    if os.getenv('IS_LOCAL') == 'true':
-        file_path = 'D:/Code/.python/Dicoding/PRSA_Data_20130301-20170228/PRSA_Data_Aotizhongxin_20130301-20170228.csv'
-    else:
-        # Path relatif di GitHub atau cloud storage
+    if st.config.get_option('server.headless'):
+        # Berjalan di Streamlit Cloud
         file_path = 'data/PRSA_Data_Aotizhongxin_20130301-20170228.csv'
+    else:
+        # Berjalan di lokal
+        file_path = 'D:/Code/.python/Dicoding/PRSA_Data_20130301-20170228/PRSA_Data_Aotizhongxin_20130301-20170228.csv'
+    df = pd.read_csv(file_path)
     df['date'] = pd.to_datetime(df[['year', 'month', 'day', 'hour']])
     df['rainy_day'] = df['RAIN'].apply(lambda x: "Hujan" if x > 0 else "Tidak Hujan")
     df['weekday'] = df['date'].dt.dayofweek
