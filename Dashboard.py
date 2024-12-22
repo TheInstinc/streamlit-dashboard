@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 
 # Fungsi untuk memuat data
 def load_data():
-    df = pd.read_csv("D:/Code/.python/Dicoding/PRSA_Data_20130301-20170228/PRSA_Data_Aotizhongxin_20130301-20170228.csv")
+    df = pd.read_csv("data/PRSA_Data_Aotizhongxin_20130301-20170228.csv")
     df['date'] = pd.to_datetime(df[['year', 'month', 'day', 'hour']])
     df['rainy_day'] = df['RAIN'].apply(lambda x: "Hujan" if x > 0 else "Tidak Hujan")
     df['weekday'] = df['date'].dt.dayofweek
