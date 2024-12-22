@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 def load_data():
     if st.config.get_option('server.headless'):
         # Berjalan di Streamlit Cloud
-        file_path = 'data/PRSA_Data_Aotizhongxin_20130301-20170228.csv'
+        file_path = 'PRSA_Data_Aotizhongxin_20130301-20170228.csv'
     else:
         # Berjalan di lokal
         file_path = 'D:/Code/.python/Dicoding/PRSA_Data_20130301-20170228/PRSA_Data_Aotizhongxin_20130301-20170228.csv'
